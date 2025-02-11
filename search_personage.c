@@ -1,0 +1,25 @@
+#include "so_long.h"
+
+void  return_coordinates(s_node *map, int *row, int *colom)
+{
+	int i;
+	int j;
+	
+	j = 1;
+	while (map)
+	{
+		i = 0;
+		while (map->line[i])
+		{
+			if (map->line[i] == 'P')
+			{
+				*colom = i;
+				*row = j;
+				return ;
+			}
+			i++;
+		}
+		j++;
+		map = map->next;
+	}
+}

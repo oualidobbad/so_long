@@ -1,8 +1,9 @@
 #ifndef SO_LONG
 # define SO_LONG
 
-# include "GNL/get_next_line.h"
+# include "gnl/get_next_line.h"
 # include <stdio.h>
+# include "/usr/include/minilibx-linux/mlx.h"
 
 typedef struct node
 {
@@ -19,6 +20,19 @@ typedef struct caracters
 	int			zero;
 }				s_caracters;
 
+typedef struct	s_data {
+	void	*mlx;
+	void	*caracter;
+	void	*collectible;
+	void	*wall;
+	void 	*space;
+	void	*door;
+	char	*path;
+	int		width;
+	int		height;
+}				t_data;
+
+
 s_node			*creat_node(char *line);
 void			push_back(s_node **head, s_node *node);
 void			free_list(s_node **head);
@@ -34,4 +48,5 @@ void			return_coordinates(s_node *map, int *row, int *colom);
 int				lenght_line(char *str);
 s_node			*map_copy(s_node *map);
 int				check_caracter_after_flood_fill(s_node *map_copy);
+void put_img(void *mlx,void *win_mlx, s_node *map);
 #endif

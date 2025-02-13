@@ -42,18 +42,18 @@ s_node *read_map()
 
 int main()
 {
-	s_node *map, *temp;
+	s_node *map;
+	void *mlx;
+	void *mlx_win;
 
 	map = read_map();
 	if (!map)
 		return (0);
 	check_map(map);
-	temp = map;
-	while(temp)
-	{
-		printf("%s\n", temp->line);
-		temp = temp->next;
-	}
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, lenght_line(map->line) * 64, list_size(map) * 64, "Hello world!");
+	put_img(mlx, mlx_win, map);
+	mlx_loop(mlx);
 	free_list(&map);
 	return (0);
 }

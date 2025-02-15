@@ -16,7 +16,7 @@ int	check_len(s_node *map)
 	return (1);
 }
 
-void check_map(s_node *map)
+void check_map(t_data *data, s_node *map)
 {
 	int row;
 	int colom;
@@ -27,7 +27,7 @@ void check_map(s_node *map)
 	copy= map_copy(map);
 	return_coordinates(copy, &row, &colom);
 	flood_fill(copy, row, colom);
-	if (check_len(map) == 0 || check_caracter(map) == 0 || check_wall(map) == 0)
+	if (check_len(map) == 0 || check_caracter(data) == 0 || check_wall(map) == 0)
 	{
 		printf ("error\n");
 		free_list(&copy);

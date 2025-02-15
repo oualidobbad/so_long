@@ -11,17 +11,13 @@ typedef struct node
 	struct node	*next;
 }				s_node;
 
-typedef struct caracters
+typedef struct s_data
 {
 	int			e;
 	int			p;
 	int			c;
 	int			one;
 	int			zero;
-}				s_caracters;
-
-typedef struct s_data
-{
 	void		*mlx;
 	void		*win;
 	void		*caracter;
@@ -34,6 +30,8 @@ typedef struct s_data
 	int			height;
 	int			row;
 	int			colom;
+	int			x;
+	int			y;
 	s_node		*head;
 }				t_data;
 
@@ -44,9 +42,9 @@ void			push_back(s_node **head, s_node *node);
 void			free_list(s_node **head);
 s_node			*ft_last_node(s_node *list);
 int				check_wall(s_node *head);
-int				check_caracter(s_node *map);
+int				check_caracter(t_data *);
 int				check_len(s_node *map);
-void			check_map(s_node *map);
+void			check_map(t_data *data, s_node *map);
 int				list_size(s_node *map);
 s_node			*ft_list_at(s_node *begin, int pos);
 void			flood_fill(s_node *map, int row, int colom);
@@ -54,5 +52,5 @@ void			return_coordinates(s_node *map, int *row, int *colom);
 int				lenght_line(char *str);
 s_node			*map_copy(s_node *map);
 int				check_caracter_after_flood_fill(s_node *map_copy);
-void			put_img(void *mlx, void *win_mlx, s_node *map);
+void			put_img(void *mlx, void *win_mlx, s_node *map, t_data *img);
 #endif

@@ -1,8 +1,9 @@
 #include "../so_long.h"
 
-int	init_caracter(s_node *map, s_caracters *caracter, int i)
+int	init_caracter(t_data *data, int i)
 {
-	if (!caracter || !map)
+	s_node *map = data->head;
+	if (!map)
 		return 0;
 	while (map)
 	{
@@ -10,15 +11,15 @@ int	init_caracter(s_node *map, s_caracters *caracter, int i)
 		while (map->line[i])
 		{
 			if (map->line[i] == '1')
-				caracter->one++;
+				data->one++;
 			else if (map->line[i] == '0')
-				caracter->zero++;
+				data->zero++;
 			else if (map->line[i] == 'E')
-				caracter->e++;
+				data->e++;
 			else if (map->line[i] == 'P')
-				caracter->p++;
+				data->p++;
 			else if (map->line[i] == 'C')
-				caracter->c++;
+				data->c++;
 			else
 				return (0);
 			i++;
@@ -53,15 +54,14 @@ int check_caracter_after_flood_fill(s_node *map_copy)
 	return 1;
 }
 
-int	check_caracter(s_node *map)
+int	check_caracter(t_data *data)
 {
-	s_caracters	caracter;
 
-	caracter.one = caracter.zero = caracter.e = caracter.p = caracter.c = 0;
-	if (init_caracter(map, &caracter, 0) == 0)
+	data->one = data->zero = data->e = data->p = data->c = 0;
+	if (init_caracter(data, 0) == 0)
         return (0);
-	if (caracter.c >= 1 && caracter.e == 1 && caracter.p == 1
-		&& caracter.zero >= 1)
+	if (data->c >= 1 && data->e == 1 && data->p == 1
+		&& data->zero >= 1)
 		return (1);
 	else
 		return (0);

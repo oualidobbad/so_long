@@ -6,7 +6,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@cc  $^ $(MLX) -o $@
+	@cc $(FLAGS) $^ $(MLX) -o $@
 clean:
 	@rm -rf $(NAME)
 re: clean all 

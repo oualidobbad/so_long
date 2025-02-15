@@ -42,18 +42,18 @@ s_node *read_map()
 
 int main()
 {
-	s_node *map;
-	void *mlx;
-	void *mlx_win;
+	t_data game;
 
-	map = read_map();
-	if (!map)
+	game.head = read_map();
+	if (!game.head)
 		return (0);
-	check_map(map);
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, lenght_line(map->line) * 64, list_size(map) * 64, "Hello world!");
-	put_img(mlx, mlx_win, map);
-	mlx_loop(mlx);
-	free_list(&map);
+	
+	check_map(game.head);
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, lenght_line(game.head->line) * 64, list_size(game.head) * 64, "Hello world!");
+	put_img(game.mlx, game.win, game.head);
+	mlx_hook(game.win, 2, 1L<<0, key_hook, &game);
+	mlx_loop(game.mlx);
+	free_list(&game.head);
 	return (0);
 }

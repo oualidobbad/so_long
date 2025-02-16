@@ -56,7 +56,7 @@ s_node	*ft_list_at(s_node *begin, int pos)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	if (!begin)
 		return (NULL);
 	while (begin)

@@ -5,7 +5,7 @@ void  return_coordinates(s_node *map, int *row, int *colom)
 	int i;
 	int j;
 	
-	j = 1;
+	j = 0;
 	while (map)
 	{
 		i = 0;

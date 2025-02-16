@@ -2,8 +2,6 @@
 
 void	push_img(void *mlx, t_data *img, s_node *map)
 {
-	img->height = list_size(map);
-	img->width = lenght_line(map->line);
 	img->caracter = mlx_xpm_file_to_image(mlx, "imgs/caracter.xpm", &img->width, &img->height);
 	img->space = mlx_xpm_file_to_image(mlx, "imgs/space.xpm", &img->width, &img->height);
 	img->wall = mlx_xpm_file_to_image(mlx, "imgs/wall.xpm", &img->width, &img->height);
@@ -12,6 +10,7 @@ void	push_img(void *mlx, t_data *img, s_node *map)
 }
 void put_img(void *mlx,void *win_mlx, s_node *map, t_data *img)
 {
+	img->height = list_size(map);
 	int (i), j = 0;
 	push_img(mlx, img, map);
 	while (map)

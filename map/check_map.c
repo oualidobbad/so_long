@@ -18,15 +18,15 @@ int	check_len(s_node *map)
 
 void check_map(t_data *data, s_node *map)
 {
-	int row;
-	int colom;
+	int row_player;
+	int colom_player;
 	s_node *copy;
 
-	row = 0;
-	colom = 0;
+	row_player = 0;
+	colom_player = 0;
 	copy= map_copy(map);
-	return_coordinates(copy, &row, &colom);
-	flood_fill(copy, row, colom);
+	return_coordinates(copy, &row_player, &colom_player);
+	flood_fill(copy, row_player, colom_player);
 	if (check_len(map) == 0 || check_caracter(data) == 0 || check_wall(map) == 0)
 	{
 		printf ("error\n");

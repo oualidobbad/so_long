@@ -44,8 +44,8 @@ int main()
 {
 	t_data game;
 
-	game.height = 0;
-	game.width = 0;
+	game.height_map = 0;
+	game.width_map = 0;
 
 	game.head = read_map();
 	if (!game.head)
@@ -54,12 +54,11 @@ int main()
 	check_map(&game, game.head);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, lenght_line(game.head->line) * 64, list_size(game.head) * 64, "Hello world!");
-	return_coordinates(game.head, &game.row, &game.colom);
+	return_coordinates(game.head, &game.row_player, &game.colom_player);
 	put_img(game.mlx, game.win, game.head, &game);
-	game.height =  list_size(game.head);
-	game.width =  lenght_line(game.head->line);
+	game.height_map =  list_size(game.head);
+	game.width_map =  lenght_line(game.head->line);
 	mlx_hook(game.win, 2, 1L<<0, key_hook, &game);
 	mlx_loop(game.mlx);
-	free_list(&game.head);
 	return (0);
 }

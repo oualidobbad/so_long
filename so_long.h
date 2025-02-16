@@ -25,13 +25,13 @@ typedef struct s_data
 	void		*wall;
 	void		*space;
 	void		*door;
-	char		*path;
-	int			width;
-	int			height;
-	int			row;
-	int			colom;
-	int			x;
-	int			y;
+	int			width_map;
+	int			height_map;
+	int			row_player;
+	int			colom_player;
+	int			colom_exit;
+	int			row_exit;
+	int			moves;
 	s_node		*head;
 }				t_data;
 
@@ -47,10 +47,11 @@ int				check_len(s_node *map);
 void			check_map(t_data *data, s_node *map);
 int				list_size(s_node *map);
 s_node			*ft_list_at(s_node *begin, int pos);
-void			flood_fill(s_node *map, int row, int colom);
-void			return_coordinates(s_node *map, int *row, int *colom);
+void			flood_fill(s_node *map, int row_player, int colom_player);
+void			return_coordinates(s_node *map, int *row_player, int *colom_player);
 int				lenght_line(char *str);
 s_node			*map_copy(s_node *map);
 int				check_caracter_after_flood_fill(s_node *map_copy);
 void			put_img(void *mlx, void *win_mlx, s_node *map, t_data *img);
+void	handle_close(t_data *game);
 #endif

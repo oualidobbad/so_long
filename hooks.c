@@ -1,57 +1,86 @@
 #include "so_long.h"
 
-void	handl_close(t_data *game)
+void	free_imgs(t_data *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	if (!game->mlx || !game->win)
+		return ;
+	if (game->caracter)
+		mlx_destroy_image(game->mlx, game->caracter);
+	if (game->door)
+		mlx_destroy_image(game->mlx, game->door);
+	if (game->space)
+		mlx_destroy_image(game->mlx, game->space);
+	if (game->wall)
+		mlx_destroy_image(game->mlx, game->wall);
+	if (game->collectible)
+		mlx_destroy_image(game->mlx, game->collectible);
 }
-
-void	handle_exit_top_player(t_data *game)
+void	handle_close(t_data *game)
 {
-	if (game->c <= 0)
+		free_list(&game->head);
+		free_imgs(game);
+		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
 		exit(0);
 }
-
+void	handle_exit(t_data *game)
+{
+	if (game->c <= 0)
+	{
+		free_list(&game->head);
+		free_imgs(game);
+		mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		exit(0);
+	}
+	
+}
+void 	move_player_helper(t_data *game, int i, int j, char move)
+{
+		if (move == 's')
+			++game->row_player;
+		else if (move == 'w')
+			--game->row_player;
+		else if (move == 'a')
+			--game->colom_player;
+		else
+			++game->colom_player;
+		mlx_put_image_to_window(game->mlx, game->win, (game->caracter), j * 64, i * 64);
+}
 void	move_player(t_data *game, int i, int j, char move)
 {
-	//players'coordinates
-	int r = game->row;
-	int c = game->colom;
-
-	//exit coorrdinates
-	int r_e = game->y;
-	int c_e = game->x;
-	if (i > game->height && j >= game->width && i < 1 && j < 0)
+	if (i > game->height_map && j >= game->width_map && i < 1 && j < 0)
 	    return ;
 	if (ft_list_at(game->head, i)->line[j] != '1')
 	{
-		if (r_e == i && j == c_e)
-			handle_exit_top_player(game);
-		if (ft_list_at(game->head, i)->line[j] == 'C')
+		if (game->row_exit == i && j == game->colom_exit)
+			handle_exit(game);
+			if (ft_list_at(game->head, i)->line[j] == 'C')
+		{
+			ft_list_at(game->head, i)->line[j] = '0';
 			game->c--;
-		mlx_put_image_to_window(game->mlx, game->win, game->space, c * 64, r
+		}
+		mlx_put_image_to_window(game->mlx, game->win, game->space, game->colom_player * 64, game->row_player
 			* 64);
-		mlx_put_image_to_window(game->mlx, game->win, game->door, c_e * 64, r_e
+		mlx_put_image_to_window(game->mlx, game->win, game->door, game->colom_exit * 64, game->row_exit
 			* 64);
-		if (move == 's')
-			++game->row;
-		else if (move == 'w')
-			--game->row;
-		else if (move == 'a')
-			--game->colom;
-		else
-			++game->colom;
-		mlx_put_image_to_window(game->mlx, game->win, (game->caracter), j * 64, i * 64);
+		move_player_helper(game, i, j, move);
+		printf("move: %d\n", game->moves--);
 	}
 }
 
 int	key_hook(int key_code, t_data *game)
 {
-	int r, c;
-	r = game->row;
-	c = game->colom;
+	int r;
+	int c;
+
+	game->moves = 1;
+	r = game->row_player;
+	c = game->colom_player;
 	if (key_code == 65307)
-		handl_close(game);
+		handle_close(game);
 	else if (key_code == 'w')
 		move_player(game, r - 1, c, 'w');
 	else if (key_code == 's')
@@ -62,7 +91,3 @@ int	key_hook(int key_code, t_data *game)
 		move_player(game, r, c + 1, 'd');
 	return (0);
 }
-// 65361
-// 65362
-// 65363
-// 65364

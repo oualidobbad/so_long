@@ -15,6 +15,7 @@ void	free_imgs(t_data *game)
 	if (game->collectible)
 		mlx_destroy_image(game->mlx, game->collectible);
 }
+
 void	handle_close(t_data *game)
 {
 		free_list(&game->head);
@@ -24,6 +25,7 @@ void	handle_close(t_data *game)
 		free(game->mlx);
 		exit(0);
 }
+
 void	handle_exit(t_data *game)
 {
 	if (game->c <= 0)
@@ -35,8 +37,8 @@ void	handle_exit(t_data *game)
 		free(game->mlx);
 		exit(0);
 	}
-	
 }
+
 void 	move_player_helper(t_data *game, int i, int j, char move)
 {
 		if (move == 's')
@@ -49,6 +51,7 @@ void 	move_player_helper(t_data *game, int i, int j, char move)
 			++game->colom_player;
 		mlx_put_image_to_window(game->mlx, game->win, (game->caracter), j * 64, i * 64);
 }
+
 void	move_player(t_data *game, int i, int j, char move)
 {
 	if (i > game->height_map && j >= game->width_map && i < 1 && j < 0)
@@ -57,7 +60,7 @@ void	move_player(t_data *game, int i, int j, char move)
 	{
 		if (game->row_exit == i && j == game->colom_exit)
 			handle_exit(game);
-			if (ft_list_at(game->head, i)->line[j] == 'C')
+		if (ft_list_at(game->head, i)->line[j] == 'C')
 		{
 			ft_list_at(game->head, i)->line[j] = '0';
 			game->c--;
@@ -67,7 +70,7 @@ void	move_player(t_data *game, int i, int j, char move)
 		mlx_put_image_to_window(game->mlx, game->win, game->door, game->colom_exit * 64, game->row_exit
 			* 64);
 		move_player_helper(game, i, j, move);
-		printf("move: %d\n", game->moves--);
+		printf("move: %d\n", game->moves++);
 	}
 }
 
@@ -76,7 +79,6 @@ int	key_hook(int key_code, t_data *game)
 	int r;
 	int c;
 
-	game->moves = 1;
 	r = game->row_player;
 	c = game->colom_player;
 	if (key_code == 65307)

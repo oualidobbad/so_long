@@ -37,6 +37,7 @@ void	push_back(s_node **head, s_node *node)
 		last_node->next = node;
 	}
 }
+
 int	list_size(s_node *map)
 {
 	int i;

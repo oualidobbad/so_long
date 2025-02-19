@@ -7,9 +7,7 @@ int		lenght_line(char *str)
 	if (!str)
 		return 0;
 	while (str[i])
-	{
 		i++;
-	}
 	return i;
 }
 

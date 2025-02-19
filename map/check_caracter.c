@@ -1,8 +1,7 @@
 #include "../so_long.h"
 
-int	init_caracter(t_data *data, int i)
+int	init_caracter(t_data *data, int i, s_node *map )
 {
-	s_node *map = data->head;
 	if (!map)
 		return 0;
 	while (map)
@@ -28,13 +27,12 @@ int	init_caracter(t_data *data, int i)
 	}
     return (1);
 }
+
 int check_caracter_after_flood_fill(s_node *map_copy)
 {
 	int i;
-	s_node *tmp;
 
 	i = 0;
-	tmp = map_copy;
 	if (!map_copy)
 		return 0;
 	while (map_copy)
@@ -58,7 +56,7 @@ int	check_caracter(t_data *data)
 {
 
 	data->one = data->zero = data->e = data->p = data->c = 0;
-	if (init_caracter(data, 0) == 0)
+	if (init_caracter(data, 0, data->head) == 0)
         return (0);
 	if (data->c >= 1 && data->e == 1 && data->p == 1
 		&& data->zero >= 1)

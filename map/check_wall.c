@@ -17,6 +17,7 @@ int	top_bottom(s_node *map)
 	}
 	return (1);
 }
+
 int	sides(s_node *map)
 {
 	size_t	len;

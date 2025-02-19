@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void  return_coordinates(s_node *map, int *row_player, int *colom_player)
+void  return_coordinates(s_node *map, t_data *coordinates)
 {
 	int i;
 	int j;
@@ -13,8 +13,8 @@ void  return_coordinates(s_node *map, int *row_player, int *colom_player)
 		{
 			if (map->line[i] == 'P')
 			{
-				*colom_player = i;
-				*row_player = j;
+				coordinates->colom_player = i;
+				coordinates->row_player = j;
 				return ;
 			}
 			i++;

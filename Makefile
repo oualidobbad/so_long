@@ -1,15 +1,23 @@
-SRC = *.c $(wildcard map/*.c) gnl/get_next_line.c gnl/get_next_line_utils.c 
+SRCS = *.c $(wildcard map/*.c) gnl/get_next_line.c gnl/get_next_line_utils.c 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+MLX_DIR = minilibx-linux
+INCLUDES = -I/usr/include
+MLX = -L/usr/lib -lmlx -lXext -lX11
+OBJS = $(SRCS:.c=.o)
 NAME = so_long
-FLAGS = -Wall -Werror -Wextra
-MLX = -lmlx -L/usr/include/minilibx-linux/ -lXext -lX11
-OBJ = $(SRC:.c=.o)
+
 all: $(NAME)
 
-$(NAME): $(SRC)
-	@cc  $^ $(MLX) -o $@
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(SRCS) $(MLX) -o $(NAME)
+
 clean:
-	@rm -rf $(NAME)
-re: clean all 
-test:
-	cc test.c $(MLX) -o test
-.PHONY: clean all re
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+

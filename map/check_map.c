@@ -18,18 +18,14 @@ int	check_len(s_node *map)
 
 void check_map(t_data *data, s_node *map)
 {
-	int row_player;
-	int colom_player;
 	s_node *copy;
 
-	row_player = 0;
-	colom_player = 0;
 	copy= map_copy(map);
-	return_coordinates(copy, &row_player, &colom_player);
-	flood_fill(copy, row_player, colom_player);
+	return_coordinates(copy, data);
+	flood_fill(copy, data->row_player, data->colom_player);
 	if (check_len(map) == 0 || check_caracter(data) == 0 || check_wall(map) == 0)
 	{
-		printf ("error\n");
+		write (2, "map invalid\n", 12);
 		free_list(&copy);
 		free_list (&map);
 		exit (0);

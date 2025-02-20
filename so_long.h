@@ -35,7 +35,6 @@ typedef struct s_data
 	s_node		*head;
 }				t_data;
 
-void			handl_close(t_data *vars);
 int				key_hook(int key_code, t_data *vars);
 s_node			*creat_node(char *line);
 void			push_back(s_node **head, s_node *node);
@@ -53,5 +52,5 @@ int				lenght_line(char *str);
 s_node			*map_copy(s_node *map);
 int				check_caracter_after_flood_fill(s_node *map_copy);
 void			put_img(s_node *map, t_data *img);
-void	handle_close(t_data *game);
+int	handle_close(t_data *game);
 #endif

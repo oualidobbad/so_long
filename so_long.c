@@ -80,6 +80,7 @@ int main(int ac, char **av)
 	game.width_map =  lenght_line(game.head->line);
 	game.moves = 1;
 	mlx_hook(game.win, 2, 1L<<0, key_hook, &game);
+	mlx_hook(game.win, 17, 1L<<17, handle_close, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

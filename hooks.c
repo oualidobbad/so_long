@@ -16,7 +16,7 @@ void	free_imgs(t_data *game)
 		mlx_destroy_image(game->mlx, game->collectible);
 }
 
-void	handle_close(t_data *game)
+int	handle_close(t_data *game)
 {
 		free_list(&game->head);
 		free_imgs(game);
@@ -24,6 +24,7 @@ void	handle_close(t_data *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 		exit(0);
+		return 0;
 }
 
 void	handle_exit(t_data *game)

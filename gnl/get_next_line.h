@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:47 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/08 22:23:39 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/22 20:25:16 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdio.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 char	*ft_strjoin(char *s1, char *s2);

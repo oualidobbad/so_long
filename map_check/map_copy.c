@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   map_copy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 14:41:26 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/08 21:11:47 by oobbad           ###   ########.fr       */
+/*   Created: 2025/02/22 15:45:12 by oobbad            #+#    #+#             */
+/*   Updated: 2025/02/22 15:47:27 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
+#include "../so_long.h"
 
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(char const *s);
-char	*ft_strdup(char const *s);
-int		find_line(char *str);
-char	*get_next_line(int fd);
-#endif
+t_node	*map_copy(t_node *map)
+{
+	t_node	*map_copy;
+	t_node	*node;
+
+	map_copy = NULL;
+	while (map)
+	{
+		node = creat_node(map->line);
+		if (!node)
+			return (free_list(&map), free_list(&map_copy), NULL);
+		push_back(&map_copy, node);
+		map = map->next;
+	}
+	return (map_copy);
+}

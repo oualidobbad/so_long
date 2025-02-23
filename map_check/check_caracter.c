@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:49 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/22 16:19:17 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/23 11:26:24 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	check_caracter(t_data *data)
 	data->c = 0;
 	if (init_caracter(data, 0, data->head) == 0)
 		return (0);
-	if (data->c >= 1 && data->e == 1 && data->p == 1 && data->zero >= 1)
+	if (data->c >= 1 && data->e == 1 && data->p == 1)
 		return (1);
 	else
 		return (0);

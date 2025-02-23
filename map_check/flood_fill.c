@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:04 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/22 15:47:27 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/23 11:30:57 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,21 @@ int	lenght_line(char *str)
 
 void	flood_fill(t_node *map, int row_player, int colom_player)
 {
-	if (row_player < 0 || colom_player < 0 || row_player >= list_size(map)
-		|| colom_player >= lenght_line(map->line))
+	t_node *row = NULL;
+	int		size_row = 0;
+	int 	size_colom = 0;
+
+	row = ft_list_at(map, row_player);
+	size_colom = lenght_line(map->line);
+	size_row = list_size(map);
+	if (row_player < 0 || colom_player < 0 || row_player >= size_row
+		|| colom_player >= size_colom)
 		return ;
-	if ((ft_list_at(map, row_player))->line[colom_player] == 'F'
-		|| (ft_list_at(map, row_player))->line[colom_player] == '1')
+	
+	if (row->line[colom_player] == 'F'
+		|| row->line[colom_player] == '1')
 		return ;
-	(ft_list_at(map, row_player))->line[colom_player] = 'F';
+	row->line[colom_player] = 'F';
 	flood_fill(map, row_player - 1, colom_player);
 	flood_fill(map, row_player + 1, colom_player);
 	flood_fill(map, row_player, colom_player - 1);

@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:19 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 11:33:37 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/23 22:06:26 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,16 @@ int	main(int ac, char **av)
 		write (1, "Error\n", 6);
 		return (1);
 	}
-	game.height_map = list_size(game.head);
-	game.width_map = lenght_line(game.head->line);
 	check_map(&game, game.head);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, lenght_line(game.head->line) * 64,
 			list_size(game.head) * 64, "so_long");
 	put_img(game.head, &game);
+	game.height_map = list_size(game.head);
+	game.width_map = lenght_line(game.head->line);
 	game.moves = 1;
+	game.succ = 0;
+	mlx_set_font(game.mlx, game.win, "12*24");
 	mlx_hook(game.win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.win, 17, 1L << 17, handle_close, &game);
 	mlx_loop(game.mlx);

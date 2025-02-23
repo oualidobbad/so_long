@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:25 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/22 17:07:17 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/23 22:22:44 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	free_imgs(t_data *game)
 {
 	if (!game->mlx || !game->win)
 		return ;
-	if (game->caracter)
-		mlx_destroy_image(game->mlx, game->caracter);
+	if (game->top)
+		mlx_destroy_image(game->mlx, game->top);
+	if (game->bottom)
+		mlx_destroy_image(game->mlx, game->bottom);
 	if (game->door)
 		mlx_destroy_image(game->mlx, game->door);
 	if (game->space)
@@ -26,6 +28,16 @@ void	free_imgs(t_data *game)
 		mlx_destroy_image(game->mlx, game->wall);
 	if (game->collectible)
 		mlx_destroy_image(game->mlx, game->collectible);
+	if (game->success)
+		mlx_destroy_image(game->mlx, game->success);
+	if (game->left)
+		mlx_destroy_image(game->mlx, game->left);
+	if (game->right)
+		mlx_destroy_image(game->mlx, game->right);
+	if (game->door_open)
+		mlx_destroy_image(game->mlx, game->door_open);
+	if (game->back_ground_moves)
+		mlx_destroy_image(game->mlx, game->back_ground_moves);
 }
 
 void	handle_exit(t_data *game)
@@ -41,18 +53,47 @@ void	handle_exit(t_data *game)
 	}
 }
 
-void	move_player_helper(t_data *game, int i, int j, char move)
+void 	move_player_with_animation(t_data *game, int i, int j, char move)
 {
 	if (move == 's')
-		++game->row_player;
-	else if (move == 'w')
-		--game->row_player;
-	else if (move == 'a')
-		--game->colom_player;
+		{
+			++game->row_player;
+			mlx_put_image_to_window(game->mlx, game->win, (game->bottom), j * 64, i * 64);
+		}
+		else if (move == 'w')
+		{
+			--game->row_player;
+			mlx_put_image_to_window(game->mlx, game->win, (game->top), j * 64, i * 64);
+		}
+		else if (move == 'a')
+		{
+			--game->colom_player;
+			mlx_put_image_to_window(game->mlx, game->win, (game->left), j * 64, i * 64);
+		}
+		else
+		{
+			++game->colom_player;
+			mlx_put_image_to_window(game->mlx, game->win, (game->right), j * 64, i * 64);
+		}
+}
+
+void	move_player_helper(t_data *game, int i, int j, char move)
+{
+	if (game->c <= 0 && game->succ == 0)
+	{
+		if (move == 's')
+			++game->row_player;
+		else if (move == 'w')
+			--game->row_player;
+		else if (move == 'a')
+			--game->colom_player;
+		else
+			++game->colom_player;
+		game->succ++;
+		mlx_put_image_to_window(game->mlx, game->win, (game->success), j * 64, i * 64);
+	}
 	else
-		++game->colom_player;
-	mlx_put_image_to_window(game->mlx, game->win, (game->caracter), j * 64, i
-		* 64);
+		move_player_with_animation(game, i, j, move);
 }
 
 void	move_player(t_data *game, int i, int j, char move)
@@ -70,12 +111,18 @@ void	move_player(t_data *game, int i, int j, char move)
 		}
 		mlx_put_image_to_window(game->mlx, game->win, game->space,
 			game->colom_player * 64, game->row_player * 64);
-		mlx_put_image_to_window(game->mlx, game->win, game->door,
-			game->colom_exit * 64, game->row_exit * 64);
+		if (game->c <= 0)
+			mlx_put_image_to_window(game->mlx, game->win, game->door_open,
+				game->colom_exit * 64, game->row_exit * 64);
+		else
+			mlx_put_image_to_window(game->mlx, game->win, game->door,
+				game->colom_exit * 64, game->row_exit * 64);
 		move_player_helper(game, i, j, move);
-		write (1, "move: ", 6);
-		ft_putnbr(game->moves++);
-		write (1, "\n", 1);
+		mlx_put_image_to_window(game->mlx, game->win, game->back_ground_moves, 0, 0);
+		game->str = ft_itoa(game->moves++);
+		mlx_string_put(game->mlx, game->win, 10, 30, 0x000000, "moves:");
+		mlx_string_put(game->mlx, game->win,80 , 30, 0x000000, game->str);
+		free (game->str);
 	}
 }
 

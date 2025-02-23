@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:38 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/22 19:00:28 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/23 22:20:56 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,17 @@ typedef struct s_data
 	int			zero;
 	void		*mlx;
 	void		*win;
-	void		*caracter;
+	void		*top;
+	void		*bottom;
+	void		*left;
+	void		*right;
+	void		*success;
 	void		*collectible;
 	void		*wall;
 	void		*space;
 	void		*door;
+	void		*door_open;
+	void		*back_ground_moves;
 	int			width_map;
 	int			height_map;
 	int			row_player;
@@ -44,9 +50,12 @@ typedef struct s_data
 	int			colom_exit;
 	int			row_exit;
 	int			moves;
+	int			succ;
+	char		*str;
 	t_node		*head;
 }				t_data;
 
+char			*ft_itoa(int n);
 int				ft_putnbr(int n);
 void			free_imgs(t_data *game);
 int				key_hook(int key_code, t_data *vars);

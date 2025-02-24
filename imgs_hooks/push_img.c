@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:30 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 21:59:24 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/24 20:50:48 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	push_img(t_data *img)
 			&img->width_map, &img->height_map);
 	img->back_ground_moves = mlx_xpm_file_to_image(img->mlx, "textures/black.xpm",
 			&img->width_map, &img->height_map);
-	if (!img->back_ground_moves || !img->bottom || !img->top || !img->space || !img->wall || !img->collectible || !img->door || !img->left || !img->right || !img->success || !img->door_open)
+	img->enimy = mlx_xpm_file_to_image(img->mlx, "textures/enimy.xpm",
+			&img->width_map, &img->height_map);
+	if (!img->enimy || !img->back_ground_moves || !img->bottom || !img->top || !img->space || !img->wall 
+		|| !img->collectible || !img->door || !img->left || !img->right || !img->success || !img->door_open)
 	{
 		write(2, "Error\n", 6);
 		handle_close(img);
@@ -67,13 +70,17 @@ void	put_img_to_window(char c, int i, int j, t_data *img)
 		img->row_exit = j;
 	}
 	else if (c == 'P')
-		mlx_put_image_to_window(img->mlx, img->win, img->top, i * 64, j
-			* 64);
+		mlx_put_image_to_window(img->mlx, img->win, img->top, i * 64, j * 64);
 	else if (c == 'C')
-		mlx_put_image_to_window(img->mlx, img->win, img->collectible, i * 64, j
-			* 64);
-}
-
+		mlx_put_image_to_window(img->mlx, img->win, img->collectible, i * 64, j * 64);
+	else
+	{
+		mlx_put_image_to_window(img->mlx, img->win, img->enimy, i * 64, j * 64);
+		img->colom_enimy = i;
+		img->row_enimy = j;
+	}
+}	
+		
 void	put_img(t_node *map, t_data *img)
 {
 	int	i;

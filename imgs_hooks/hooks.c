@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:25 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 22:22:44 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/24 21:07:19 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	free_imgs(t_data *game)
 		mlx_destroy_image(game->mlx, game->door_open);
 	if (game->back_ground_moves)
 		mlx_destroy_image(game->mlx, game->back_ground_moves);
+	if (game->enimy)
+		mlx_destroy_image(game->mlx, game->enimy);
 }
 
 void	handle_exit(t_data *game)
@@ -104,13 +106,15 @@ void	move_player(t_data *game, int i, int j, char move)
 	{
 		if (game->row_exit == i && j == game->colom_exit)
 			handle_exit(game);
+		if (game->row_enimy == i && j == game->colom_enimy)
+			handle_close(game);
 		if (ft_list_at(game->head, i)->line[j] == 'C')
 		{
 			ft_list_at(game->head, i)->line[j] = '0';
 			game->c--;
 		}
-		mlx_put_image_to_window(game->mlx, game->win, game->space,
-			game->colom_player * 64, game->row_player * 64);
+		printf("%d\n",mlx_put_image_to_window(game->mlx, game->win, game->space,
+			game->colom_player * 64, game->row_player * 64));
 		if (game->c <= 0)
 			mlx_put_image_to_window(game->mlx, game->win, game->door_open,
 				game->colom_exit * 64, game->row_exit * 64);

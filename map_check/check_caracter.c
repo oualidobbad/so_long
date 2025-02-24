@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:49 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 11:26:24 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/24 20:29:18 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_caracter(t_data *data, int i, t_node *map)
 		{
 			if (map->line[i] == '1')
 				data->one++;
-			else if (map->line[i] == '0')
+			else if (map->line[i] == '0' || map->line[i] == 'M')
 				data->zero++;
 			else if (map->line[i] == 'E')
 				data->e++;
@@ -71,6 +71,7 @@ int	check_caracter(t_data *data)
 	data->zero = 0;
 	data->p = 0;
 	data->c = 0;
+	data->m = 0;
 	if (init_caracter(data, 0, data->head) == 0)
 		return (0);
 	if (data->c >= 1 && data->e == 1 && data->p == 1)

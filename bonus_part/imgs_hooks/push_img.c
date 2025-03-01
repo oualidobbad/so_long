@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:30 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/24 20:50:48 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/25 12:05:47 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,7 @@ void	put_img_to_window(char c, int i, int j, t_data *img)
 	else if (c == 'C')
 		mlx_put_image_to_window(img->mlx, img->win, img->collectible, i * 64, j * 64);
 	else
-	{
 		mlx_put_image_to_window(img->mlx, img->win, img->enimy, i * 64, j * 64);
-		img->colom_enimy = i;
-		img->row_enimy = j;
-	}
 }	
 		
 void	put_img(t_node *map, t_data *img)

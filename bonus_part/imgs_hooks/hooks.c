@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:25 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/24 21:07:19 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/02/25 09:36:24 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,15 @@ void	move_player(t_data *game, int i, int j, char move)
 	{
 		if (game->row_exit == i && j == game->colom_exit)
 			handle_exit(game);
-		if (game->row_enimy == i && j == game->colom_enimy)
+		if (ft_list_at(game->head, i)->line[j] == 'M')
 			handle_close(game);
 		if (ft_list_at(game->head, i)->line[j] == 'C')
 		{
 			ft_list_at(game->head, i)->line[j] = '0';
 			game->c--;
 		}
-		printf("%d\n",mlx_put_image_to_window(game->mlx, game->win, game->space,
-			game->colom_player * 64, game->row_player * 64));
+		mlx_put_image_to_window(game->mlx, game->win, game->space,
+			game->colom_player * 64, game->row_player * 64);
 		if (game->c <= 0)
 			mlx_put_image_to_window(game->mlx, game->win, game->door_open,
 				game->colom_exit * 64, game->row_exit * 64);

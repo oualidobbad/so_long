@@ -1,4 +1,16 @@
-SRCS = imgs_hooks/ft_putnbr.c imgs_hooks/hooks.c imgs_hooks/ft_itoa.c imgs_hooks/push_img.c main/so_long.c gnl/get_next_line.c gnl/get_next_line_utils.c map_check/check_caracter.c map_check/check_map.c map_check/check_wall.c map_check/flood_fill.c map_check/linked_list.c map_check/map_copy.c
+SRCS = mandatory_part/imgs_hooks/ft_putnbr.c \
+       mandatory_part/imgs_hooks/hooks.c \
+       mandatory_part/imgs_hooks/push_img.c \
+       mandatory_part/main/so_long.c \
+       mandatory_part/gnl/get_next_line.c \
+       mandatory_part/gnl/get_next_line_utils.c \
+       mandatory_part/map_check/check_caracter.c \
+       mandatory_part/map_check/check_map.c \
+       mandatory_part/map_check/check_wall.c \
+       mandatory_part/map_check/flood_fill.c \
+       mandatory_part/map_check/linked_list.c \
+       mandatory_part/map_check/map_copy.c
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLX = -L/usr/include/minilibx-linux -lmlx -lXext -lX11
@@ -8,7 +20,7 @@ NAME = so_long
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)

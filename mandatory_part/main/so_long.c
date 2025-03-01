@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:19 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 22:06:26 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 10:50:25 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ int	main(int ac, char **av)
 	game.width_map = lenght_line(game.head->line);
 	game.moves = 1;
 	game.succ = 0;
-	mlx_set_font(game.mlx, game.win, "12*24");
 	mlx_hook(game.win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.win, 17, 1L << 17, handle_close, &game);
 	mlx_loop(game.mlx);

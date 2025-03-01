@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:38 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/24 20:38:18 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 10:53:44 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_data
 	int			c;
 	int			one;
 	int			zero;
-	int			m;
 	void		*mlx;
 	void		*win;
 	void		*top;
@@ -43,16 +42,12 @@ typedef struct s_data
 	void		*space;
 	void		*door;
 	void		*door_open;
-	void		*enimy;
-	void		*back_ground_moves;
 	int			width_map;
 	int			height_map;
 	int			row_player;
 	int			colom_player;
 	int			colom_exit;
 	int			row_exit;
-	int			row_enimy;
-	int			colom_enimy;
 	int			moves;
 	int			succ;
 	char		*str;

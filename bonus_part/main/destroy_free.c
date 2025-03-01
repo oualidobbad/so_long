@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 17:57:13 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 22:51:41 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 23:03:11 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,6 @@ void	handle_exit(t_data *game)
 {
 	if (game->c <= 0)
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->back_ground_moves, 0,
-		0);
-		game->str = ft_itoa(game->moves++);
-		mlx_string_put(game->mlx, game->win, 10, 30, 0x000000, "moves:");
-		mlx_string_put(game->mlx, game->win, 80, 30, 0x000000, game->str);
-		free(game->str);
 		free_list(&game->head);
 		free_imgs(game);
 		mlx_destroy_window(game->mlx, game->win);

@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:55 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 11:15:45 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 11:55:27 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_len(t_node *map)
 	while (map)
 	{
 		if (len != ft_strlen(map->line))
-			return (0);
+			return (ft_putstr(2, "Error\ncheck lenght map"), 0);
 		map = map->next;
 	}
 	return (1);
@@ -38,7 +38,6 @@ void	check_map(t_data *data, t_node *map)
 	if (check_len(map) == 0 || check_caracter(data) == 0
 		|| check_wall(map) == 0)
 	{
-		perror("Error\nmap invalid");
 		free_list(&copy);
 		free_list(&map);
 		exit(0);

@@ -6,21 +6,21 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:30 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/25 12:05:47 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 22:34:50 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	handle_close(t_data *game)
+void	handle_error_imags(t_data *img)
 {
-	free_list(&game->head);
-	free_imgs(game);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	exit(0);
-	return (0);
+	if (!img->enimy || !img->back_ground_moves || !img->bottom || !img->top
+		|| !img->space || !img->wall || !img->collectible || !img->door
+		|| !img->left || !img->right || !img->success || !img->door_open)
+	{
+		write(2, "Error\n", 6);
+		handle_close(img);
+	}
 }
 
 void	push_img(t_data *img)
@@ -45,16 +45,11 @@ void	push_img(t_data *img)
 			&img->width_map, &img->height_map);
 	img->door_open = mlx_xpm_file_to_image(img->mlx, "textures/door_open.xpm",
 			&img->width_map, &img->height_map);
-	img->back_ground_moves = mlx_xpm_file_to_image(img->mlx, "textures/black.xpm",
-			&img->width_map, &img->height_map);
+	img->back_ground_moves = mlx_xpm_file_to_image(img->mlx,
+			"textures/black.xpm", &img->width_map, &img->height_map);
 	img->enimy = mlx_xpm_file_to_image(img->mlx, "textures/enimy.xpm",
 			&img->width_map, &img->height_map);
-	if (!img->enimy || !img->back_ground_moves || !img->bottom || !img->top || !img->space || !img->wall 
-		|| !img->collectible || !img->door || !img->left || !img->right || !img->success || !img->door_open)
-	{
-		write(2, "Error\n", 6);
-		handle_close(img);
-	}
+	handle_error_imags(img);
 }
 
 void	put_img_to_window(char c, int i, int j, t_data *img)
@@ -72,11 +67,12 @@ void	put_img_to_window(char c, int i, int j, t_data *img)
 	else if (c == 'P')
 		mlx_put_image_to_window(img->mlx, img->win, img->top, i * 64, j * 64);
 	else if (c == 'C')
-		mlx_put_image_to_window(img->mlx, img->win, img->collectible, i * 64, j * 64);
+		mlx_put_image_to_window(img->mlx, img->win, img->collectible, i * 64, j
+			* 64);
 	else
 		mlx_put_image_to_window(img->mlx, img->win, img->enimy, i * 64, j * 64);
-}	
-		
+}
+
 void	put_img(t_node *map, t_data *img)
 {
 	int	i;

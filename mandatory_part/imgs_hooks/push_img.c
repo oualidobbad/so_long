@@ -6,31 +6,31 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:30 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 10:59:11 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 14:48:01 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	handle_close(t_data *game)
+void	handle_error_img(t_data *img)
 {
-	free_list(&game->head);
-	free_imgs(game);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	exit(0);
-	return (0);
+	if (!img->bottom || !img->top || !img->space || !img->wall
+		|| !img->collectible || !img->door || !img->left || !img->right
+		|| !img->success || !img->door_open)
+	{
+		ft_putstr(2, "Error\nCheck images (in push_img)");
+		handle_close(img);
+	}
 }
 
 void	push_img(t_data *img)
 {
 	img->top = mlx_xpm_file_to_image(img->mlx, "textures/top.xpm",
 			&img->width_map, &img->height_map);
-	img->bottom = mlx_xpm_file_to_image(img->mlx,
-			"textures/bottom.xpm", &img->width_map, &img->height_map);
-	img->success = mlx_xpm_file_to_image(img->mlx,
-			"textures/happy.xpm", &img->width_map, &img->height_map);
+	img->bottom = mlx_xpm_file_to_image(img->mlx, "textures/bottom.xpm",
+			&img->width_map, &img->height_map);
+	img->success = mlx_xpm_file_to_image(img->mlx, "textures/happy.xpm",
+			&img->width_map, &img->height_map);
 	img->left = mlx_xpm_file_to_image(img->mlx, "textures/left.xpm",
 			&img->width_map, &img->height_map);
 	img->right = mlx_xpm_file_to_image(img->mlx, "textures/right.xpm",
@@ -40,19 +40,12 @@ void	push_img(t_data *img)
 	img->wall = mlx_xpm_file_to_image(img->mlx, "textures/wall.xpm",
 			&img->width_map, &img->height_map);
 	img->collectible = mlx_xpm_file_to_image(img->mlx,
-			"textures/collectible.xpm", &img->width_map,
-			&img->height_map);
+			"textures/collectible.xpm", &img->width_map, &img->height_map);
 	img->door = mlx_xpm_file_to_image(img->mlx, "textures/door.xpm",
 			&img->width_map, &img->height_map);
-	img->door_open = mlx_xpm_file_to_image(img->mlx,
-			"textures/door_open.xpm", &img->width_map,
-			&img->height_map);
-	if (!img->bottom || !img->top || !img->space || !img->wall || !img->collectible || !img->door
-		|| !img->left || !img->right || !img->success || !img->door_open)
-	{
-		write(2, "Error\n img", 6);
-		handle_close(img);
-	}
+	img->door_open = mlx_xpm_file_to_image(img->mlx, "textures/door_open.xpm",
+			&img->width_map, &img->height_map);
+	handle_error_img(img);
 }
 
 void	put_img_to_window(char c, int i, int j, t_data *img)

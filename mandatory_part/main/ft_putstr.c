@@ -6,13 +6,13 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:11:50 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 11:01:03 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 11:43:53 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_putstr(char *s)
+void	ft_putstr(int fd, char *s)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ void	ft_putstr(char *s)
 		return ;
 	while (s[i])
 	{
-		write(1, (s + i), 1);
+		write(fd, (s + i), 1);
 		i++;
 	}
 }

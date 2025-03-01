@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:38 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/25 10:26:47 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 22:33:36 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_data
 }				t_data;
 
 char			*ft_itoa(int n);
+void			ft_putstr(int fd, char *s);
 int				ft_putnbr(int n);
 void			free_imgs(t_data *game);
 int				key_hook(int key_code, t_data *vars);
@@ -78,4 +79,5 @@ t_node			*map_copy(t_node *map);
 int				check_caracter_after_flood_fill(t_node *map_copy);
 void			put_img(t_node *map, t_data *img);
 int				handle_close(t_data *game);
+void			handle_exit(t_data *game);
 #endif

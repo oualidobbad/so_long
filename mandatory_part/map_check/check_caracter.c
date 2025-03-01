@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:49 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 10:52:57 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 15:07:27 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	check_caracter_after_flood_fill(t_node *map_copy)
 		{
 			if (map_copy->line[i] == 'C' || map_copy->line[i] == 'E')
 			{
-				perror("Error\n");
+				ft_putstr(2, "Error\nThe player will not reach");
+				ft_putstr(2, " EXIT or Collectible check map.");
 				return (0);
 			}
 			i++;
@@ -72,9 +73,14 @@ int	check_caracter(t_data *data)
 	data->p = 0;
 	data->c = 0;
 	if (init_caracter(data, 0, data->head) == 0)
-		return (0);
+		return (ft_putstr(2,
+				"Error\nYou have additional char Check caracters of map."), 0);
 	if (data->c >= 1 && data->e == 1 && data->p == 1)
 		return (1);
 	else
+	{
+		ft_putstr (2, "Error\nyou must have less than one ");
+		ft_putstr (2, "COLLECTIBLE and one EXIT or one PLAYER check map.");
 		return (0);
+	}
 }

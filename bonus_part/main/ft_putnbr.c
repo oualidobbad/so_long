@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:37:37 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/22 17:03:38 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 18:34:45 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,3 @@ int	ft_putnbr_uns(unsigned int n)
 	count += write(1, &q, 1);
 	return (count);
 }
-// int main()
-// {
-// 	int i = ft_putnbr();
-// 	ft_putnbr(i);
-// }

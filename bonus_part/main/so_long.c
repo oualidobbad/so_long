@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:19 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/27 22:17:01 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/01 22:35:23 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,6 @@ int	check_ber(char *str, char *ber)
 	return (perror("Error\nFile Not end with .ber"), 0);
 }
 
-void	free_list(t_node **head)
-{
-	t_node	*temp;
-
-	if (!head)
-		return ;
-	while (*head)
-	{
-		free((*head)->line);
-		temp = (*head)->next;
-		free(*head);
-		(*head) = temp;
-	}
-}
-
 t_node	*read_map(char *av)
 {
 	t_node	*map;
@@ -111,13 +96,13 @@ int	main(int ac, char **av)
 	game.head = read_map(av[1]);
 	if (!game.head)
 	{
-		write (1, "Error\n", 6);
+		ft_putstr(2, "Error\nmap NULL");
 		return (1);
 	}
 	check_map(&game, game.head);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, lenght_line(game.head->line) * 64,
-			list_size(game.head) * 64, "so_long");
+			list_size(game.head) * 64, "SO_LONG_BONUS");
 	put_img(game.head, &game);
 	game.height_map = list_size(game.head);
 	game.width_map = lenght_line(game.head->line);

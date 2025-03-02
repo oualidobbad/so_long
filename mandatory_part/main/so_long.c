@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:19 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/02 13:17:37 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 15:03:41 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int ac, char **av)
 	game.head = read_map(av[1]);
 	if (!game.head)
 	{
-		ft_putstr(2, "Error\nmap return (NULL");
+		ft_putstr(2, "Error\nmap is EMPTY");
 		return (1);
 	}
 	check_map(&game, game.head);

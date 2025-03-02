@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:37:37 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 18:34:45 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:24 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	ft_putnbr(int n)
 {

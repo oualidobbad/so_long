@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 17:57:13 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 23:03:11 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:07 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	free_list(t_node **head)
 {

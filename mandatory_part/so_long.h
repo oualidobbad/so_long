@@ -6,7 +6,7 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:38 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 14:41:45 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:51:36 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_data
 	int			row_exit;
 	int			moves;
 	int			succ;
-	char		*str;
 	t_node		*head;
 }				t_data;
 

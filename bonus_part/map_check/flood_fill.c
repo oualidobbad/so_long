@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:04 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 18:09:03 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:29:07 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	lenght_line(char *str)
 {

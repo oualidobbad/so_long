@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:19 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 22:35:23 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:38 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	return_coordinates(t_node *map, t_data *coordinates)
 {

@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:11:50 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 11:43:53 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:31 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	ft_putstr(int fd, char *s)
 {

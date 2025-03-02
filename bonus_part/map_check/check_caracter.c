@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:49 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 22:35:32 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:47 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	init_caracter(t_data *data, int i, t_node *map)
 {

@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:00 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 18:07:15 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:29:00 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	top_bottom(t_node *map)
 {

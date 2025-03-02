@@ -33,25 +33,28 @@ OBJS = $(SRCS:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX = -L/usr/include/minilibx-linux -lmlx -lXext -lX11
+MLX = -lmlx -lXext -lX11 -L/usr/include/minilibx-linux 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME)
 
-bonus: $(OBJ_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLX) -o $(NAME)
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLX) -o $(NAME_BONUS)
 
 clean:
-	rm -f $(OBJS) $(OBJ_BONUS) bonus
+	rm -f $(OBJS) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all 
 re_bonnus: fclean bonus
 
 .SECONDARY: $(OBJ_BONUS) $(OBJS)
-.PHONY: all clean fclean bonus
+.PHONY: all clean fclean

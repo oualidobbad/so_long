@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:45:25 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 22:34:34 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:27:43 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	move_player_with_animation(t_data *game, int i, int j, char move)
 {

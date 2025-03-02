@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 09:49:37 by oobbad            #+#    #+#             */
-/*   Updated: 2025/02/23 21:24:36 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:16 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 static int	lenint(long n)
 {

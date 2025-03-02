@@ -6,11 +6,11 @@
 /*   By: oobbad <oobbad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:44:55 by oobbad            #+#    #+#             */
-/*   Updated: 2025/03/01 18:02:52 by oobbad           ###   ########.fr       */
+/*   Updated: 2025/03/02 14:28:54 by oobbad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	check_len(t_node *map)
 {

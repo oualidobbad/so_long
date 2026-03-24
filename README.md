@@ -1,28 +1,26 @@
-# so_long
+    # so_long
 
-## Description
-2D tile-based game built with MiniLibX for the 42 curriculum.
+    2D tile game using MiniLibX: parse a `.ber` map, validate it, collect all items, then reach the exit.
 
-## Features
-- Map parsing/validation; collectibles and exit conditions.
-- Player movement with simple rendering.
+    ## Architecture
+    - Map: parser validates rectangle, walls, counts (1 exit, 1 player, >=1 collectible), and allowed chars.
+    - Path check: flood-fill/BFS to ensure every collectible and the exit are reachable from the player start.
+    - Render: MiniLibX window, sprites per tile; hooks for key input (WASD/arrow) and window close.
+    - State: tracks player position, steps, remaining collectibles, and exits when win/lose.
 
-## Technologies Used
-- C, MiniLibX, Makefile.
+    ## Build & Run
+    - Requires MiniLibX dependencies (X11 on Linux, or macOS frameworks per 42 setup).
+    - `make` → builds `so_long`.
+    - Run: `./so_long maps/map.ber`.
 
-## Installation
-- Ensure MiniLibX deps, then run `make`.
+    ## Technical Notes
+    - Input handling uses event hooks; keep redraws minimal (only dirty tiles if optimized).
+    - Ensure graceful cleanup: destroy images, window, and free map buffers on exit or errors.
+    - Map charset typically: `01CEP` (wall, floor, collectible, exit, player).
 
-## Usage
-- `./so_long maps/map.ber` to play a provided map.
+    ## Testing Ideas
+    - Invalid maps: holes in walls, multiple players/exits, unreachable collectibles, non-rectangular rows.
+    - Movement: step counter increments once per valid move; win triggers only after all collectibles gathered.
 
-## Example
-- Move with arrow/WASD keys to collect items and exit.
-
-## Technical Notes
-- Map loader validates rectangular shape, walls, collectibles, exit, and player start; floods invalid maps.
-- Rendering via MiniLibX 2D blits; key hooks drive player moves with step counting.
-- Keep textures path-correct in .ber; maps must use only allowed characters (1/0/E/C/P).   
-
-## Author
-- Oualid Obbad (@oualidobbad)
+    ## Author
+    Oualid Obbad (@oualidobbad)

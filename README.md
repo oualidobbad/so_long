@@ -19,5 +19,10 @@
 ## Example
 - Move with arrow/WASD keys to collect items and exit.
 
+## Technical Notes
+- Map loader validates rectangular shape, walls, collectibles, exit, and player start; floods invalid maps.
+- Rendering via MiniLibX 2D blits; key hooks drive player moves with step counting.
+- Keep textures path-correct in .ber; maps must use only allowed characters (1/0/E/C/P).   
+
 ## Author
 - Oualid Obbad (@oualidobbad)
